@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Store</title>
+<style>
+  body { font-family: sans-serif; margin: 2rem; }
+  nav a { margin-right: 1rem; }
+  #product-image { max-width: 300px; display: block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<h1>Welcome to My Test Store</h1>
+
+<nav>
+  <a href="?id=1">Product 1</a>
+  <a href="?id=2">Product 2</a>
+</nav>
+
+<h2 id="product-title">Product Title</h2>
+<img id="product-image" src="" alt="Product Image">
+<p id="product-description">Product description will appear here.</p>
+
+<script>
+  // Get query parameter
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  // Demo products
+  const products = {
+    1: { title: "Red Shirt", description: "Bright red t-shirt", image: "https://via.placeholder.com/300x300?text=Red+Shirt" },
+    2: { title: "Blue Hat", description: "Cool blue hat", image: "https://via.placeholder.com/300x300?text=Blue+Hat" },
+  };
+
+  if (id && products[id]) {
+    const p = products[id];
+    document.getElementById("product-title").textContent = p.title;
+    document.getElementById("product-description").textContent = p.description;
+    document.getElementById("product-
