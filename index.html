@@ -194,6 +194,7 @@
       z-index: 200;
       top: 0;
       right: 0;
+      background-color: #7daf42;
     }
 
     .nav-sub-toggle-label span::before,
@@ -296,11 +297,15 @@
         opacity: 0;
         visibility: visible;
         overflow: hidden;
-        transition: max-height 0.3s ease-out, opacity 0.3s ease;
+        border: none;
+        border-bottom: solid #8bc34a;
+        border-bottom-width: 0px;
+        transition: max-height 0.3s ease, opacity 0.3s ease, border-bottom-width 0.3s ease;
       }
       .nav-sub-toggle:checked + .nav-sub-toggle-label + ul {
         opacity: 1;
         max-height: 10000px;
+        border-bottom-width: 4px;
       }
 
       .nav-sub-toggle-label {
