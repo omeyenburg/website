@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background-color: #ffffff;
+}
+
+h1 {
+  font-family: "Schoolbell", cursive, "google";
+  font-size: 40px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 2px;
+  color: #005899;
+}
+
+p {
+  color: #000;
+  font-family: Helvetica,"Helvetica Neue",Arial,sans-serif,"websafe";
+  font-size: 16px;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.content {
+  padding: 80px 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.centered {
+  text-align: center;
+}
+
+img {
+  width: 80%;
+  max-height: 400px;
+  padding: 30px;
+  box-sizing: content-box;
+  display: inline;
+}
