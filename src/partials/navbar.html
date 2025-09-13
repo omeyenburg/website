@@ -2,9 +2,9 @@
   <input type="checkbox" id="nav-toggle">
   <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
   <ul class="nav-menu">
-    <li><a href="/index.html">Home</a></li>
+    <li><a href="/index.html" {{nav-button:index}}>Home</a></li>
     <li>
-      <a href="/shop.html">Shop</a>
+      <a href="/shop.html" {{nav-button:shop}}>Shop</a>
       <input type="checkbox" class="nav-sub-toggle" id="nav-shop-toggle">
       <label for="nav-shop-toggle" class="nav-sub-toggle-label"><span></span></label>
       <ul class="dropdown">
@@ -16,11 +16,11 @@
         <li><a href="#">Tier Motive</a></li>
       </ul>
     </li>
-    <li><a href="/buegelanleitung.html">Bügelanleitungen</a></li>
-    <li><a href="/new.html">+ Neu +</a></li>
-    <li><a href="/sale.html">Sale</a></li>
+    <li><a href="/buegelanleitung.html" {{nav-button:buegelanleitung}}>Bügelanleitungen</a></li>
+    <li><a href="/new.html" {{nav-button:new}}>+ Neu +</a></li>
+    <li><a href="/sale.html" {{nav-button:sale}}>Sale</a></li>
     <li>
-      <a href="/farbinspiration.html">Farbe suchen</a>
+      <a href="/farbinspiration.html" {{nav-button:farbinspiration}}>Farbe suchen</a>
       <input type="checkbox" class="nav-sub-toggle" id="nav-color-toggle">
       <label for="nav-color-toggle" class="nav-sub-toggle-label"><span></span></label>
       <ul class="dropdown">
@@ -39,7 +39,7 @@
       </ul>
     </li>
     <li>
-      <a href="/groessen.html">Größe suchen</a>
+      <a href="/groessen.html" {{nav-button:groessen}}>Größe suchen</a>
       <input type="checkbox" class="nav-sub-toggle" id="nav-size-toggle">
       <label for="nav-size-toggle" class="nav-sub-toggle-label"><span></span></label>
       <ul class="dropdown">
@@ -49,7 +49,7 @@
         <li><a href="#">Flicken Breite 10-11 cm</a></li>
       </ul>
     </li>
-    <li><a href="/about.html">Über uns</a></li>
+    <li><a href="/about.html" {{nav-button:about}}>Über uns</a></li>
   </ul>
   <a href="#" class="checkout-btn" title="Checkout">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#022b4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">

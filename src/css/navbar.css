@@ -1,4 +1,3 @@
-/* Navigation wrapper */
 nav.primary-navigation {
   font-family: "Schoolbell", cursive, "google";
   font-size: 18px;
@@ -52,6 +51,7 @@ nav.primary-navigation ul li a {
 }
 
 /* Hover + active state */
+nav.primary-navigation ul li a.nav-item-active, /* Applied in page builder script */
 nav.primary-navigation ul li a:hover,
 nav.primary-navigation ul li a:focus,
 nav.primary-navigation ul li a:active {
