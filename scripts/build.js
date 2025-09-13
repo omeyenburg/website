@@ -3,6 +3,7 @@ import path from "path";
 import { minify as htmlMinify } from "html-minifier";
 import CleanCSS from "clean-css";
 import { minify as terserMinify } from "terser";
+import { buildPage, getHtmlFilePaths, getRelativePath } from "./pageBuilder.js";
 
 const fastBuild = (process.argv[2] === "fast");
 
@@ -12,12 +13,17 @@ const dist = path.resolve("dist");
 const distCss = path.join(dist, "css");
 const distJs = path.join(dist, "js");
 
-const baseTemplate = fs.readFileSync(path.join(src, "base.html"), "utf-8");
-const navbarHTML = fs.readFileSync(path.join(src, "partials/navbar.html"), "utf-8");
+// Remove old build files
+if (fs.existsSync(dist)) {
+  fs.readdirSync(dist).forEach(file => {
+    const curPath = path.join(dist, file);
+    fs.rmSync(curPath, { recursive: true, force: true });
+  });
+}
 
-// Ensure folders exist
+// Create folders
 [dist, distCss, distJs].forEach(dir => {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.mkdirSync(dir, { recursive: true });
 });
 
 // Minify CSS
@@ -51,15 +57,12 @@ if (fs.existsSync(jsDir)) {
 }
 
 // Build minified html
-const pagesDir = path.join(src, "pages");
-for (const file of fs.readdirSync(pagesDir)) {
-  if (!file.endsWith(".html")) continue;
-  const content = fs.readFileSync(path.join(pagesDir, file), "utf-8");
-  let pageHTML = baseTemplate.replace("{{navbar}}", navbarHTML);
-  pageHTML = pageHTML.replace("{{content}}", content);
+const htmlFiles = getHtmlFilePaths();
+for (const filePath of htmlFiles) {
+  let html = buildPage(filePath);
 
   if (!fastBuild) {
-    pageHTML = htmlMinify(pageHTML, {
+    html = htmlMinify(html, {
       collapseWhitespace: true,
       removeComments: true,
       minifyJS: true,
@@ -67,7 +70,12 @@ for (const file of fs.readdirSync(pagesDir)) {
     });
   }
 
-  fs.writeFileSync(path.join(dist, file), pageHTML, "utf-8");
+  // Preserve relative paths for nested files
+  const relativePath = getRelativePath(filePath);
+  const outPath = path.join(dist, relativePath);
+
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, html, "utf-8");
 }
 
 console.log("Build complete!");
