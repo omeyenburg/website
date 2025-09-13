@@ -49,7 +49,7 @@ if (fs.existsSync(jsDir)) {
     let js = fs.readFileSync(path.join(jsDir, file), "utf-8");
 
     if (!fastBuild) {
-      js = await terserMinify(js).code;
+      js = (await terserMinify(js)).code;
     }
 
     fs.writeFileSync(path.join(dist, "js", file), js, "utf-8");
