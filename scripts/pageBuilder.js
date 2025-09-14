@@ -21,7 +21,6 @@ export function buildPage(filePath) {
   labeledPlaceholders.forEach(placeholder => {
     if (placeholder[1] === "nav-button") {
       const query = `{{${placeholder[1]}:${placeholder[2]}}}`;
-      // console.log(query)
       if (placeholder[2] === pageId) {
         html = html.replace(query, 'class="nav-item-active"');
       } else {

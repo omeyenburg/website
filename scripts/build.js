@@ -78,4 +78,15 @@ for (const filePath of htmlFiles) {
   fs.writeFileSync(outPath, html, "utf-8");
 }
 
+// Add assets
+const assetsDir = path.join(src, "assets");
+if (!fs.existsSync(dist)) fs.mkdirSync(dist, { recursive: true });
+if (fs.existsSync(assetsDir)) {
+  for (const file of fs.readdirSync(assetsDir)) {
+    const srcPath = path.join(assetsDir, file);
+    const distPath = path.join(dist, file);
+    fs.copyFileSync(srcPath, distPath);
+  }
+}
+
 console.log("Build complete!");
