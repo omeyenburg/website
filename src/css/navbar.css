@@ -1,16 +1,12 @@
-nav.primary-navigation {
+.nav-bar {
   font-family: "Schoolbell", cursive, "google";
   font-size: 18px;
   font-weight: bold;
-  font-style: normal;
   text-align: center;
-  text-transform: none;
+  text-transform: uppercase;
   letter-spacing: 2px;
 
   background-color: #8bc34a;
-  text-align: center;
-  padding: 0;
-  margin: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +22,7 @@ nav.primary-navigation {
   -webkit-user-drag: none; /* Safari/Chrome */
 }
 
-nav.primary-navigation ul {
+.nav-menu {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -35,32 +31,39 @@ nav.primary-navigation ul {
   flex-wrap: wrap;
 }
 
-nav.primary-navigation ul li {
-  margin: 0;
-  padding: 0;
+.nav-menu li {
   position: relative;
 }
 
-nav.primary-navigation ul li a {
-  display: inline-block;
-  padding: 16px;
-  text-transform: uppercase;
-  color: #022b4f;
+.nav-menu a {
   text-decoration: none;
+  display: block;
+  padding: 16px;
+  color: #022b4f;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover + active state */
-nav.primary-navigation ul li a.nav-item-active, /* Applied in page builder script */
-nav.primary-navigation ul li a:hover,
-nav.primary-navigation ul li a:focus,
-nav.primary-navigation ul li a:active {
+/* Hover & active state */
+.nav-menu a.nav-item-active, /* Applied in page builder script */
+.nav-menu a:hover,
+.nav-menu a:active,
+.nav-menu a:focus {
   background-color: #367714;
   color: #fcfcfc;
 }
 
-/* Dropdown */
-nav.primary-navigation ul li ul {
+/* Not mobile */
+@media (min-width: 1056px) {
+  .nav-menu > li:hover > a,
+  .nav-menu > li:focus > a,
+  .nav-menu > li:active > a {
+    background-color: #367714;
+    color: #fcfcfc;
+  }
+}
+
+/* Sub menu dropdown */
+.nav-sub-menu {
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -71,39 +74,32 @@ nav.primary-navigation ul li ul {
   background-color: #eee;
   display: none;
   min-width: 210px;
-  box-shadow: 0px 3px 5px -1px #ccc;
+  box-shadow: 0px 2px 3px #aaa;
   z-index: 100;
 }
 
-nav.primary-navigation ul li ul li {
+/* Remove enumeration points */
+.nav-sub-menu li {
   display: block;
 }
 
-nav.primary-navigation ul li ul li a {
-  display: block;
-  padding: 10px 20px;
-  color: #022b4f;
-  background-color: transparent;
+.nav-sub-menu a {
+  padding: 10px 25px;
 }
 
-nav.primary-navigation ul li ul li a:hover {
+.nav-sub-menu a:hover {
   background-color: #367714;
   color: #fcfcfc;
 }
 
-.nav-toggle-label:hover,
-.nav-sub-toggle-label:hover {
-  background-color: #367714;
-}
-
 /* Show dropdown on hover */
-nav.primary-navigation ul li:hover > ul {
+.nav-bar ul li:hover > ul {
   visibility: visible;
   opacity: 1;
   display: block;
 }
 
-/* Hamburger toggle for mobile */
+/* Menu toggle (mobile) */
 #nav-toggle {
   display: none;
 }
@@ -126,14 +122,8 @@ nav.primary-navigation ul li:hover > ul {
   top: 25px;
   width: 25px;
   height: 3px;
-  background-color: #022b4f;
   transition: all 0.3s ease;
-}
-
-.nav-toggle-label:hover span,
-.nav-toggle-label:hover span::before,
-.nav-toggle-label:hover span::after {
-  background-color: #fcfcfc;
+  background-color: #022b4f;
 }
 
 .nav-toggle-label span::before {
@@ -146,6 +136,18 @@ nav.primary-navigation ul li:hover > ul {
   content: '';
   top: 8px;
   left: 0;
+}
+
+/* Animate when hovered */
+.nav-toggle-label:hover,
+.nav-sub-toggle-label:hover {
+  background-color: #367714;
+}
+
+.nav-toggle-label:hover span,
+.nav-toggle-label:hover span::before,
+.nav-toggle-label:hover span::after {
+  background-color: #fcfcfc;
 }
 
 /* Animate when checked */
@@ -166,40 +168,23 @@ nav.primary-navigation ul li:hover > ul {
   width: 30px;
 }
 
-/* sub toggles */
+/* Sub menu toggles */
 .nav-sub-toggle {
   display: none;
   top: -57px;
-  align: left;
   right: 0;
 }
 
 .nav-sub-toggle-label {
+  cursor: pointer;
   display: none;
   position: absolute;
-  width: 57px;
-  height: 57px;
-  cursor: pointer;
-  z-index: 200;
   top: 0;
   right: 0;
+  width: 57px;
+  height: 57px;
+  z-index: 200;
   background-color: #7daf42;
-}
-
-.nav-sub-toggle-label span::before,
-.nav-sub-toggle-label span::after {
-  display: block;
-  position: absolute;
-  content: '';
-  width: 15px;
-  height: 3px;
-  background-color: #022b4f;
-  transition: all 0.3s ease;
-}
-
-.nav-sub-toggle-label:hover span::before,
-.nav-sub-toggle-label:hover span::after {
-  background-color: #fcfcfc;
 }
 
 .nav-sub-toggle-label span::before {
@@ -214,6 +199,23 @@ nav.primary-navigation ul li:hover > ul {
   rotate: -45deg;
 }
 
+/* Animate when hovered */
+.nav-sub-toggle-label span::before,
+.nav-sub-toggle-label span::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  transition: all 0.3s ease;
+  background-color: #022b4f;
+}
+
+.nav-sub-toggle-label:hover span::before,
+.nav-sub-toggle-label:hover span::after {
+  background-color: #fcfcfc;
+}
+
 /* Animate when checked */
 .nav-sub-toggle:checked + .nav-sub-toggle-label span::before {
   transform: rotate(-90deg);
@@ -225,78 +227,71 @@ nav.primary-navigation ul li:hover > ul {
 
 /* Mobile */
 @media (max-width: 1056px) {
-  nav.primary-navigation {
-    min-height: 57px;
-    overflow-y: auto;
+  .nav-bar {
     max-height: 100vh;
+    overflow-y: auto;
   }
 
-  nav.primary-navigation ul {
-    display: none;
-    flex-direction: column;
-    text-align: left;
+  /* Menu */
+  .nav-menu a {
+    width: 100%;
   }
 
   #nav-toggle ~ ul {
+    flex-direction: column;
+    text-align: left;
     display: flex;
     padding-top: 57px;
+    visibility: visible;
+    overflow-y: hidden;
+
+    /* Hidden by default */
     max-height: 0;
     opacity: 0;
-    visibility: visible;
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
   }
+
   #nav-toggle:checked ~ ul {
+    transition: all 0.3s ease;
     max-height: 10000px;
     opacity: 1;
   }
 
+  /* Menu toggle */
   .nav-toggle-label {
     display: block; /* Show hamburger button */
   }
 
-  nav.primary-navigation ul li a {
-    width: 100%;
-  }
-
-  nav.primary-navigation li ul {
+  /* Sub menus */
+  .nav-sub-menu {
     position: static;
-    opacity: 1;
-    display: none;
-    box-shadow: none;
-  }
-
-  /* remove hover for mobile */
-  nav.primary-navigation ul li > ul {
-    position: static;
-    width: 100%;
     background-color: #7daf42;
     box-shadow: none;
     display: block;
   }
 
-  nav.primary-navigation ul li ul li a {
+  .nav-sub-menu a {
     padding-left: 30px;
   }
 
-  /* sub toggles */
   .nav-sub-toggle + .nav-sub-toggle-label + ul {
-    display: block;
-    max-height: 0;
-    opacity: 0;
-    visibility: visible;
+    display: block; /* Show sub menu button */
     overflow: hidden;
+    visibility: visible;
+    transition: all 0.3s ease;
+    opacity: 0;
+    max-height: 0;
     margin-bottom: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
   }
+
   .nav-sub-toggle:checked + .nav-sub-toggle-label + ul {
     opacity: 1;
     max-height: 10000px;
     margin-bottom: 5px;
   }
 
+  /* Sub menu toggles */
   .nav-sub-toggle-label {
-    display: block; /* Show dropdown button */
+    display: block; /* Show sub menu icon */
   }
 }
 
@@ -312,12 +307,13 @@ nav.primary-navigation ul li:hover > ul {
   align-items: center;
   z-index: 300;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .checkout-btn:hover {
   background-color: #367714;
 }
+
 .checkout-btn:hover > svg {
   stroke: #fcfcfc;
 }
