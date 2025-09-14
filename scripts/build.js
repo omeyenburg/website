@@ -80,11 +80,22 @@ for (const filePath of htmlFiles) {
 
 // Add assets
 const assetsDir = path.join(src, "assets");
-if (!fs.existsSync(dist)) fs.mkdirSync(dist, { recursive: true });
 if (fs.existsSync(assetsDir)) {
   for (const file of fs.readdirSync(assetsDir)) {
     const srcPath = path.join(assetsDir, file);
     const distPath = path.join(dist, file);
+    fs.copyFileSync(srcPath, distPath);
+  }
+}
+
+// Add fonts
+const fontsDir = path.join(src, "fonts");
+const fontsDist = path.join(dist, "fonts");
+if (!fs.existsSync(fontsDist)) fs.mkdirSync(fontsDist, { recursive: true });
+if (fs.existsSync(fontsDir)) {
+  for (const file of fs.readdirSync(fontsDir)) {
+    const srcPath = path.join(fontsDir, file);
+    const distPath = path.join(fontsDist, file);
     fs.copyFileSync(srcPath, distPath);
   }
 }
