@@ -37,9 +37,12 @@
 
 .nav-menu a {
   text-decoration: none;
-  display: block;
-  padding: 16px;
   color: #022b4f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57px;
+  padding: 0 16px;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -84,7 +87,7 @@
 }
 
 .nav-sub-menu a {
-  padding: 10px 25px;
+  padding: 0 20px;
 }
 
 .nav-sub-menu a:hover {
