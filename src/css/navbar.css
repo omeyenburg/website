@@ -222,6 +222,10 @@
     width: 100%;
   }
 
+  #nav-toggle:not(:checked) ~ ul a {
+    height: 0;
+  }
+
   #nav-toggle ~ ul {
     flex-direction: column;
     text-align: left;
