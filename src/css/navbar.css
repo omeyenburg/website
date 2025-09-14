@@ -141,18 +141,6 @@
   left: 0;
 }
 
-/* Animate when hovered */
-.nav-toggle-label:hover,
-.nav-sub-toggle-label:hover {
-  background-color: #367714;
-}
-
-.nav-toggle-label:hover span,
-.nav-toggle-label:hover span::before,
-.nav-toggle-label:hover span::after {
-  background-color: #fcfcfc;
-}
-
 /* Animate when checked */
 #nav-toggle:checked + .nav-toggle-label span {
   left: 13px;
@@ -202,7 +190,6 @@
   rotate: -45deg;
 }
 
-/* Animate when hovered */
 .nav-sub-toggle-label span::before,
 .nav-sub-toggle-label span::after {
   content: '';
@@ -212,11 +199,6 @@
   height: 3px;
   transition: all 0.3s ease;
   background-color: #022b4f;
-}
-
-.nav-sub-toggle-label:hover span::before,
-.nav-sub-toggle-label:hover span::after {
-  background-color: #fcfcfc;
 }
 
 /* Animate when checked */
