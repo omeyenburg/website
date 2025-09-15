@@ -21,19 +21,25 @@ h1 {
   }
 }
 
-p {
-  color: #000;
-  font-family: Helvetica,Arial,sans-serif;
-  font-size: 16px;
-  line-height: 1.5em;
-  text-align: left;
-}
-
-.content {
+main, footer {
   padding: 80px 10px;
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1100px;
+
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  text-align: left;
+  line-height: 1.5;
+}
+
+footer {
+  font-size: .8em;
+}
+
+footer a {
+  color: #000;
 }
 
 .centered {
