@@ -1,13 +1,10 @@
 import fs from "fs";
 import path from "path";
-import { minify as htmlMinify } from "html-minifier";
-import CleanCSS from "clean-css";
-import { minify as terserMinify } from "terser";
 import { buildPage, getHtmlFilePaths, getRelativePath } from "./pageBuilder.js";
+import { minifyHTML, minifyCSS, minifyJS } from "./minify.js";
 
 const fastBuild = (process.argv[2] === "fast");
 
-// Paths
 const src = path.resolve("src");
 const dist = path.resolve("dist");
 const distCss = path.join(dist, "css");
@@ -34,7 +31,7 @@ if (fs.existsSync(cssDir)) {
     let css = fs.readFileSync(path.join(cssDir, file), "utf-8");
 
     if (!fastBuild) {
-      css = new CleanCSS().minify(css).styles;
+      css = minifyCSS(css);
     }
 
     fs.writeFileSync(path.join(dist, "css", file), css, "utf-8");
@@ -49,7 +46,7 @@ if (fs.existsSync(jsDir)) {
     let js = fs.readFileSync(path.join(jsDir, file), "utf-8");
 
     if (!fastBuild) {
-      js = (await terserMinify(js)).code;
+      js = minifyJS(js);
     }
 
     fs.writeFileSync(path.join(dist, "js", file), js, "utf-8");
@@ -62,12 +59,7 @@ for (const filePath of htmlFiles) {
   let html = buildPage(filePath);
 
   if (!fastBuild) {
-    html = htmlMinify(html, {
-      collapseWhitespace: true,
-      removeComments: true,
-      minifyJS: true,
-      minifyCSS: true
-    });
+    html = minifyHTML(html);
   }
 
   // Preserve relative paths for nested files

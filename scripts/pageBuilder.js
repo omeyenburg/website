@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { minifyCSS } from "./minify.js";
 
 const src = path.resolve("src");
 const pagesDir = path.join(src, "pages");
@@ -10,12 +11,12 @@ const navbar = fs.readFileSync(path.join(src, "partials/navbar.html"), "utf-8");
 base = base.replace("{{navbar}}", navbar);
 const labeledPlaceholders = [...base.matchAll(/\{\{(.*?):(.*?)\}\}/g)];
 
-
 export function buildPage(filePath) {
   const pageId = getPageId(filePath)
   const content = fs.readFileSync(filePath, "utf-8");
 
   let html = base;
+  html = addPageResources(html, pageId);
   html = html.replace("{{content}}", content);
 
   labeledPlaceholders.forEach(placeholder => {
@@ -59,4 +60,31 @@ function getPageId(filePath) {
   } else {
     return path.basename(relativePath, ".html");
   }
+}
+
+function addPageResources(html, pageId) {
+  const jsFilePath = path.join(src, "js", pageId + ".js");
+  const cssFilePath = path.join(src, "css", pageId + ".css");
+  const cssEmbeddedFilePath = path.join(src, "css-embedded", pageId + ".css");
+
+  if (fs.existsSync(jsFilePath)) {
+    html = html.replace("{{page-js}}", `<script src="js/${pageId}.js" defer></script>`);
+  } else {
+    html = html.replace("{{page-js}}", "");
+  }
+
+  if (fs.existsSync(cssFilePath)) {
+    html = html.replace("{{page-css}}", `<link rel="stylesheet" href="css/${pageId}.css">`);
+  } else {
+    html = html.replace("{{page-css}}", "");
+  }
+
+  if (fs.existsSync(cssEmbeddedFilePath)) {
+    const css = minifyCSS(fs.readFileSync(cssEmbeddedFilePath, "utf-8"));
+    html = html.replace("{{page-css-embedded}}", `<style>${css}</style>`);
+  } else {
+    html = html.replace("{{page-css-embedded}}", "");
+  }
+
+  return html;
 }
