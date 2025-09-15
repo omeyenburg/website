@@ -33,6 +33,7 @@
 }
 
 .nav-menu a {
+  box-sizing: border-box;
   text-decoration: none;
   color: #022b4f;
   display: flex;
@@ -40,7 +41,7 @@
   align-items: center;
   height: 57px;
   padding: 0 16px;
-  transition: background-color 0.2s, color 0.2s, height 0.2s;
+  transition: background-color 0.2s ease, color 0.2s ease, height 0.2s ease;
 }
 
 /* Hover & active state; .nav-item-active is applied in page builder script */
@@ -121,7 +122,7 @@
   top: 25px;
   width: 25px;
   height: 3px;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   background-color: #022b4f;
 }
 
@@ -213,7 +214,17 @@
   }
 
   /* Menu */
+  .nav-menu {
+    box-shadow: 0 1px 0 0 #7daf42 inset;
+  }
+
+  .nav-menu li {
+    box-shadow: 0 -1px 0 0 #7daf42 inset;
+    transition: margin-bottom 0.2s ease;
+  }
+
   .nav-menu a {
+    justify-content: left;
     overflow: hidden;
     width: 100%;
   }
@@ -226,23 +237,22 @@
   #nav-toggle~ul {
     flex-direction: column;
     text-align: left;
-    display: flex;
-    padding-top: 57px;
+    display: block;
+    margin-top: 57px;
     overflow-y: hidden;
 
     /* Prevent tabbing when closed */
     visibility: hidden;
-    transition: visibility 0.2s;
+    transition: visibility 0.2s ease;
   }
 
   #nav-toggle:checked~ul {
     visibility: visible;
   }
 
-  /* Menu toggle */
+  /* Show menu toggle button */
   .nav-toggle-label {
     display: block;
-    /* Show hamburger button */
   }
 
   /* Sub menus */
@@ -254,7 +264,7 @@
     display: block;
     opacity: 1;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
   }
 
   .nav-sub-menu a {
@@ -267,9 +277,12 @@
     height: 0;
   }
 
-  #nav-toggle:checked~ul .nav-sub-toggle:checked+.nav-sub-toggle-label+ul {
-    visibility: visible;
+  #nav-toggle:checked~ul > li:has(.nav-sub-toggle:checked) {
     margin-bottom: 5px;
+  }
+
+  .nav-sub-toggle:checked+.nav-sub-toggle-label+ul {
+    visibility: visible;
   }
 
   /* Sub menu toggles */
@@ -289,7 +302,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 .checkout-btn:hover {
