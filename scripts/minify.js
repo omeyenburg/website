@@ -1,5 +1,5 @@
 import CleanCSS from "clean-css";
-import { minify as htmlMinify } from "html-minifier";
+import { minify as htmlMinify } from "html-minifier-terser";
 import { minify as terserMinify } from "terser";
 
 export function minifyCSS(css) {
