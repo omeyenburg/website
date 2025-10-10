@@ -46,7 +46,7 @@ if (fs.existsSync(jsDir)) {
     let js = fs.readFileSync(path.join(jsDir, file), "utf-8");
 
     if (!fastBuild) {
-      js = minifyJS(js);
+      js = await minifyJS(js);
     }
 
     fs.writeFileSync(path.join(dist, "js", file), js, "utf-8");
@@ -59,7 +59,7 @@ for (const filePath of htmlFiles) {
   let html = buildPage(filePath);
 
   if (!fastBuild) {
-    html = minifyHTML(html);
+    html = await minifyHTML(html);
   }
 
   // Preserve relative paths for nested files

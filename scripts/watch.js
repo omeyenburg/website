@@ -11,7 +11,7 @@ function runBuild() {
     currentBuild = null;
   }
 
-  currentBuild = spawn("node", ["scripts/build.js", "fast"], { stdio: "inherit" });
+  currentBuild = spawn("node", ["scripts/build.js"], { stdio: "inherit" });
 
   currentBuild.on("close", () => {
     currentBuild = null;
