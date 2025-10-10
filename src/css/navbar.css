@@ -1,25 +1,11 @@
-:root {
-  --color-shadow: #202020;
-  --color-bg-page: #191919;
-  --color-bg-surface: #30302e;
-  --color-bg-nav: #14252d;
-  --color-bg-interactive: #01798c;
-  --color-bg-accent: #504425;
-  --color-fg-default: #f0efed;
-  --color-fg-active: #f2c36a;
-  --color-fg-link: #2f5f95;
-}
-
 header {
   height: 57px;
 }
 
 .nav-bar {
-  font-family: "Schoolbell", sans-serif;
+  font-family: "Fira Code", monospace;
   font-size: 18px;
   font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 
   background-color: var(--color-bg-nav);
   position: fixed;
@@ -58,14 +44,19 @@ header {
   transition: background-color 0.2s ease, color 0.2s ease, height 0.2s ease;
 }
 
-/* Hover & active state; .nav-item-active is applied in page builder script */
-.nav-menu a.nav-item-active,
+/* Active state; .nav-item-active is applied in page builder script */
 .nav-menu a:hover,
+.nav-menu a.nav-item-active,
 .nav-menu a:active,
 .nav-menu a:focus {
   background-color: var(--color-bg-interactive);
   color: var(--color-fg-active);
   text-shadow: 0 0 3px var(--color-fg-active);
+}
+
+/* Hover state */
+.nav-menu a:hover {
+  background-color: color-mix(in srgb, var(--color-bg-interactive) 50%, transparent);
 }
 
 /* Sub menu dropdown */
@@ -90,11 +81,6 @@ header {
 
 .nav-sub-menu a {
   padding: 0 20px;
-}
-
-.nav-sub-menu a:hover {
-  background-color: var(--color-bg-interactive);
-  color: var(--color-fg-active);
 }
 
 /* Show dropdown on hover */
@@ -122,12 +108,14 @@ header {
 .nav-toggle-label span::after {
   display: block;
   position: absolute;
+  margin: 0;
   left: 16px;
   top: 25px;
   width: 25px;
   height: 3px;
   transition: all 0.2s ease;
   background-color: var(--color-fg-default);
+  box-shadow: 0 0 2px var(--color-fg-default);
 }
 
 .nav-toggle-label span::before {
@@ -146,6 +134,7 @@ header {
 #nav-toggle:checked+.nav-toggle-label span {
   left: 13px;
   background-color: transparent;
+  box-shadow: none;
 }
 
 #nav-toggle:checked+.nav-toggle-label span::before {
@@ -199,6 +188,7 @@ header {
   height: 3px;
   transition: all 0.2s;
   background-color: var(--color-fg-default);
+  box-shadow: 0 0 2px var(--color-fg-default);
 }
 
 /* Animate when checked */
@@ -210,10 +200,10 @@ header {
   transform: rotate(45deg);
 }
 
-/* Not mobile */
-@media (min-width: 700px) {
+/* Not Mobile */
+@media (min-width: 600px) {
 
-  .nav-menu>li:hover>a,
+  /* .nav-menu>li:hover>a, */
   .nav-menu>li:focus>a,
   .nav-menu>li:active>a {
     background-color: var(--color-bg-interactive);
@@ -240,7 +230,7 @@ header {
 }
 
 /* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .nav-bar {
     max-height: 100vh;
     overflow-y: auto;
