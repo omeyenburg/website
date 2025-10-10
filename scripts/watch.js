@@ -22,7 +22,7 @@ function runBuild() {
   });
 }
 
-const watcher = chokidar.watch("src", {
+const watcher = chokidar.watch(["src", "scripts/build.js", "scripts/pageBuilder.js"], {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   persistent: true,
   ignoreInitial: true,

@@ -39,14 +39,20 @@ export function getRelativePath(filePath) {
 
 export function getHtmlFilePaths() {
   const files = [];
-  for (const entry of fs.readdirSync(pagesDir, { withFileTypes: true })) {
-    const fullPath = path.join(pagesDir, entry.name);
-    if (entry.isDirectory()) {
-      files.push(...getHtmlFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith(".html")) {
-      files.push(fullPath);
+
+  function walk(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (entry.isFile() && entry.name.endsWith(".html")) {
+        files.push(fullPath);
+      }
     }
   }
+
+  walk(pagesDir);
   return files;
 }
 
