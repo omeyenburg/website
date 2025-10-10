@@ -38,44 +38,44 @@
     content="https://image.jimcdn.com/app/cms/image/transf/none/path/s35fc86afe8c9b0ad/backgroundarea/i798bc35ec22de88b/version/1469640134/image.jpg">
 
   <link rel="canonical" href="https://www.piratenbande.de/">
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/navbar.css">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <script src="/js/main.js" defer></script>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
-  <style>
-    @font-face {
-      font-family: 'Schoolbell';
-      src: url('/fonts/schoolbell.woff2') format('woff2'),
-        url('/fonts/schoolbell.woff') format('woff'),
-        url('/fonts/schoolbell.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
+  <!-- Scripts -->
+  <script src="/js/main.js" defer></script>
   {{page-js}}
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/navbar.css">
   {{page-css}}
   {{page-css-embedded}}
 </head>
 
 <body>
+  <!-- Navbar -->
   <header>
-    <!-- NAVBAR -->
     {{navbar}}
   </header>
 
-  <!-- PAGE CONTENT -->
+  <!-- Page content -->
   <main>
     {{content}}
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <a href="/about.html">Impressum</a>
     <span> | </span>
     <a href="https://github.com/omeyenburg/website">Source Code</a>
+    <span> | </span>
+    <a href="https://github.com/omeyenburg">GitHub</a>
+    <span> | </span>
+    <a href="https://www.linkedin.com/in/omeyenburg">LinkedIn</a>
   </footer>
 </body>
 
