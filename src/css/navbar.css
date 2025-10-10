@@ -1,11 +1,17 @@
 :root {
-  --shadow: #aaaaaa;
-  --background-color: #8bc34a;
-  --dropdown-background-color: #eeeeee;
-  --mobile-dropdown-background-color: #7daf42;
-  --accent-color: #367714;
-  --text-color: #022b4f;
-  --active-text-color: #fcfcfc;
+  --color-shadow: #202020;
+  --color-bg-page: #191919;
+  --color-bg-surface: #30302e;
+  --color-bg-nav: #14252d;
+  --color-bg-interactive: #01798c;
+  --color-bg-accent: #504425;
+  --color-fg-default: #f0efed;
+  --color-fg-active: #f2c36a;
+  --color-fg-link: #2f5f95;
+}
+
+header {
+  height: 57px;
 }
 
 .nav-bar {
@@ -16,7 +22,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 
-  background-color: var(--background-color);
+  background-color: var(--color-bg-nav);
   position: fixed;
   top: 0;
   left: 0;
@@ -34,7 +40,6 @@
   padding: 0;
   list-style: none;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -45,7 +50,8 @@
 .nav-menu a {
   box-sizing: border-box;
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--color-fg-default);
+  text-shadow: 0 0 1px var(--color-fg-default);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,8 +65,9 @@
 .nav-menu a:hover,
 .nav-menu a:active,
 .nav-menu a:focus {
-  background-color: var(--accent-color);
-  color: var(--active-text-color);
+  background-color: var(--color-bg-interactive);
+  color: var(--color-fg-active);
+  text-shadow: 0 0 3px var(--color-fg-active);
 }
 
 /* Not mobile */
@@ -69,8 +76,9 @@
   .nav-menu>li:hover>a,
   .nav-menu>li:focus>a,
   .nav-menu>li:active>a {
-    background-color: var(--accent-color);
-    color: var(--active-text-color);
+    background-color: var(--color-bg-interactive);
+    color: var(--color-fg-active);
+    text-shadow: 0 0 3px var(--color-fg-active);
   }
 }
 
@@ -83,10 +91,10 @@
   top: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--dropdown-background-color);
+  background-color: var(--color-bg-surface);
   display: none;
   min-width: 210px;
-  box-shadow: 0px 2px 3px var(--shadow);
+  box-shadow: 0px 2px 3px var(--color-shadow);
 }
 
 /* Remove enumeration points */
@@ -99,8 +107,8 @@
 }
 
 .nav-sub-menu a:hover {
-  background-color: var(--accent-color);
-  color: var(--active-text-color);
+  background-color: var(--color-bg-interactive);
+  color: var(--color-fg-active);
 }
 
 /* Show dropdown on hover */
@@ -133,7 +141,7 @@
   width: 25px;
   height: 3px;
   transition: all 0.2s ease;
-  background-color: var(--text-color);
+  background-color: var(--color-fg-default);
 }
 
 .nav-toggle-label span::before {
@@ -181,7 +189,7 @@
   right: 0;
   width: 57px;
   height: 57px;
-  background-color: var(--mobile-dropdown-background-color);
+  background-color: var(--color-bg-page);
 }
 
 .nav-sub-toggle-label span::before {
@@ -204,7 +212,7 @@
   width: 15px;
   height: 3px;
   transition: all 0.2s;
-  background-color: var(--text-color);
+  background-color: var(--color-fg-default);
 }
 
 /* Animate when checked */
@@ -225,11 +233,11 @@
 
   /* Menu */
   .nav-menu {
-    box-shadow: 0 1px 0 0 var(--mobile-dropdown-background-color) inset;
+    box-shadow: 0 1px 0 0 var(--color-bg-page) inset;
   }
 
   .nav-menu li {
-    box-shadow: 0 -1px 0 0 var(--mobile-dropdown-background-color) inset;
+    box-shadow: 0 -1px 0 0 var(--color-bg-page) inset;
     transition: margin-bottom 0.2s ease;
   }
 
@@ -269,7 +277,7 @@
   .nav-sub-menu {
     visibility: hidden;
     position: static;
-    background-color: var(--mobile-dropdown-background-color);
+    background-color: var(--color-bg-page);
     box-shadow: none;
     display: block;
     opacity: 1;
@@ -316,9 +324,9 @@
 }
 
 .checkout-btn:hover {
-  background-color: var(--accent-color);
+  background-color: var(--color-bg-interactive);
 }
 
 .checkout-btn:hover>svg {
-  stroke: var(--active-text-color);
+  stroke: var(--color-fg-active);
 }
