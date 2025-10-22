@@ -50,16 +50,17 @@
   {{page-js}}
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/navbar.css">
+  <!-- <link rel="stylesheet" href="/css/main.css"> -->
+  <!-- <link rel="stylesheet" href="/css/navbar.css"> -->
   {{page-css}}
-  {{page-css-embedded}}
+  {{inline-css}}
+  {{inline-page-css}}
 </head>
 
 <body>
   <!-- Navbar -->
   <header>
-    {{navbar}}
+    {{nav}}
   </header>
 
   <!-- Page content -->
@@ -69,13 +70,7 @@
 
   <!-- Footer -->
   <footer>
-    <a href="/about.html">Impressum</a>
-    <span> | </span>
-    <a href="https://github.com/omeyenburg/website">Source Code</a>
-    <span> | </span>
-    <a href="https://github.com/omeyenburg">GitHub</a>
-    <span> | </span>
-    <a href="https://www.linkedin.com/in/omeyenburg">LinkedIn</a>
+    {{footer}}
   </footer>
 </body>
 
